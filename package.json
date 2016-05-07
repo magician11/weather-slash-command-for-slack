@@ -1,0 +1,14 @@
+{
+  "name": "weather-slash-command-for-slack",
+  "version": "1.0.0",
+  "description": "A custom slash command for slack that fetches the weather for a ciy.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Golightly <support@andrewgolightly.com> (http://www.golightlyplus.com)",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.11.0"
+  }
+}
