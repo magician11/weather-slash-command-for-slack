@@ -1,15 +1,28 @@
-const city = 'Chiang Mai';
-
 const OPENWEATHERMAP_API_KEY = process.env.OPENWEATHERMAP_API_KEY;
-const WEATHER_URL_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${OPENWEATHERMAP_API_KEY}`;
 const axios = require('axios');
+const express = require('express');
+const PORT = 5555;
+const app = express();
 
-axios.get(WEATHER_URL_ENDPOINT)
-.then((response) => {
-  const weatherData = response.data;
-  console.log(`The weather in ${weatherData.name} (${weatherData.sys.country}): ${weatherData.weather[0].description}`);
-  console.log(`Current temperature: ${weatherData.main.temp} (High: ${weatherData.main.temp_max} Low: ${weatherData.main.temp_min})`);
-})
-.catch((response) => {
-  console.log(response);
+// add a task to their trello card
+app.get('/weather', (req, res) => {
+  const city = req.query.text;
+  const WEATHER_URL_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${OPENWEATHERMAP_API_KEY}`;
+
+  axios.get(WEATHER_URL_ENDPOINT)
+  .then((response) => {
+    const weatherData = response.data;
+    res.json({
+      text: `The weather in ${weatherData.name} (${weatherData.sys.country}): ${weatherData.weather[0].description}
+Current temperature: ${weatherData.main.temp} (High: ${weatherData.main.temp_max} Low: ${weatherData.main.temp_min})`
+    });
+  })
+  .catch((response) => {
+    res.json({ text: response });
+  });
+});
+
+// start the server
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
 });
