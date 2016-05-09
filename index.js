@@ -18,7 +18,7 @@ Current temperature: ${weatherData.main.temp} (High: ${weatherData.main.temp_max
     });
   })
   .catch((response) => {
-    res.json({ text: response });
+    res.json({ text: response.data.message });
   });
 });
 
