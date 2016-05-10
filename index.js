@@ -13,8 +13,14 @@ app.get('/weather', (req, res) => {
   .then((response) => {
     const weatherData = response.data;
     res.json({
-      text: `The weather in ${weatherData.name} (${weatherData.sys.country}): ${weatherData.weather[0].description}
-Current temperature: ${weatherData.main.temp} (High: ${weatherData.main.temp_max} Low: ${weatherData.main.temp_min})`
+      text: `The weather currently in ${weatherData.name} (${weatherData.sys.country})`,
+      attachments: [
+        {
+          title: weatherData.weather[0].description,
+          text: `Current temperature: ${weatherData.main.temp} (High: ${weatherData.main.temp_max} Low: ${weatherData.main.temp_min})`,
+          thumb_url: `http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`
+        }
+      ]
     });
   })
   .catch((response) => {
