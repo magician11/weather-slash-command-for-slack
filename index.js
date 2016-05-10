@@ -13,6 +13,7 @@ app.get('/weather', (req, res) => {
   .then((response) => {
     const weatherData = response.data;
     res.json({
+      response_type: 'in_channel',
       text: `The weather currently in ${weatherData.name} (${weatherData.sys.country})`,
       attachments: [
         {
