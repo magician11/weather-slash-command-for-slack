@@ -1,15 +1,14 @@
 {
   "name": "weather-slash-command-for-slack",
   "version": "1.0.0",
-  "description": "A custom slash command for slack that fetches the weather for a city.",
+  "description":
+    "A custom slash command for slack that fetches the weather for a city.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Andrew Golightly <support@andrewgolightly.com> (http://www.golightlyplus.com)",
+  "author":
+    "Andrew Golightly <support@andrewgolightly.com> (http://www.golightlyplus.com)",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.11.0",
-    "express": "^4.13.4"
+    "axios": "^0.17.1",
+    "express": "^4.16.2"
   }
 }
